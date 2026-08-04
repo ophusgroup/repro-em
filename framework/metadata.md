@@ -4,6 +4,8 @@ title: Metadata
 
 # Metadata
 
+expand
+
 ## The minimal package
 
 ## Modality and acquisition parameters

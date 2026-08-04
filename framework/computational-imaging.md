@@ -1,13 +1,27 @@
 ---
-title: Reconstruction
+title: Computational imaging
 ---
 
-# Reconstruction
+# Computational imaging
 
-## Forward models
+-Discuss how many experiments use computational imaging methods
 
-## Hyperparameters
 
-## Runnable records and containers
 
-## Linking derived products to source data
+
+Simple examples
+-Cropped FOV
+-Rescaled intensity, corrected calibrations, etc.
+
+Intermediate examples
+-aligned time series
+-differential phase contradt
+
+
+Complex examples
+-single particle analysis / cryo-EM
+-microED / 3DED
+-electron tomography
+-ptychography
+
+

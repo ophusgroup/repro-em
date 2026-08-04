@@ -4,8 +4,5 @@ title: Data
 
 # Data
 
-## What counts as raw
+should this be combined with Detectors?  "Detector data" as the name"
 
-## Intermediate products
-
-## Retention and scale

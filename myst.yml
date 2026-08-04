@@ -22,60 +22,64 @@ project:
   # Matching is exact and case-sensitive, so spelling variants need their
   # own key (see 4DSTEM / 4D-STEM).
   abbreviations:
-    # --- instruments and modes ---
-    TEM: transmission electron microscopy
-    STEM: scanning transmission electron microscopy
-    SEM: scanning electron microscopy
-    HRTEM: high-resolution transmission electron microscopy
-    HRSTEM: high-resolution scanning transmission electron microscopy
-    EFTEM: energy-filtered transmission electron microscopy
-    4DSTEM: four-dimensional scanning transmission electron microscopy
+    3DED: three-dimensional electron diffraction
     4D-STEM: four-dimensional scanning transmission electron microscopy
-    FIB: focused ion beam
-    FEG: field emission gun
-    # --- imaging and detectors ---
-    BF: bright field
-    DF: dark field
-    ADF: annular dark field
-    HAADF: high-angle annular dark field
+    4DSTEM: four-dimensional scanning transmission electron microscopy
     ABF: annular bright field
-    DPC: differential phase contrast
-    iDPC: integrated differential phase contrast
-    CTF: contrast transfer function
-    PSF: point spread function
-    MTF: modulation transfer function
-    DQE: detective quantum efficiency
-    SNR: signal-to-noise ratio
-    DED: direct electron detector
-    EMPAD: electron microscope pixel array detector
-    # --- diffraction ---
-    DP: diffraction pattern
-    SAD: selected area diffraction
-    SAED: selected area electron diffraction
+    ADF: annular dark field
+    AI: artificial intelligence
+    API: application programming interface
+    BF: bright field
     CBED: convergent beam electron diffraction
-    PACBED: position-averaged convergent beam electron diffraction
-    NBED: nanobeam electron diffraction
-    PED: precession electron diffraction
-    # --- spectroscopy and signals ---
-    EELS: electron energy-loss spectroscopy
-    XEDS: X-ray energy-dispersive spectroscopy
-    EDS: energy-dispersive X-ray spectroscopy
-    EDX: energy-dispersive X-ray spectroscopy
+    checkCIF: IUCr automated structure validation service
+    CIF: Crystallographic Information File
     CL: cathodoluminescence
-    EBIC: electron beam induced current
-    EBSD: electron backscatter diffraction
-    # --- biological EM ---
-    SPA: single-particle analysis
+    COD: Crystallography Open Database
     cryo-EM: cryogenic electron microscopy
     cryo-ET: cryogenic electron tomography
-    PDB: Protein Data Bank
-    EMDB: Electron Microscopy Data Bank
-    EMPIAR: Electron Microscopy Public Image Archive
-    # --- data and reproducibility ---
-    FAIR: findable, accessible, interoperable, reusable
-    HDF5: Hierarchical Data Format version 5
+    CSD: Cambridge Structural Database
+    CTF: contrast transfer function
+    DED: direct electron detector
+    DF: dark field
     DOI: digital object identifier
-    API: application programming interface
+    DP: diffraction pattern
+    DPC: differential phase contrast
+    DQE: detective quantum efficiency
+    EBIC: electron beam induced current
+    EBSD: electron backscatter diffraction
+    EELS: electron energy-loss spectroscopy
+    EFTEM: energy-filtered transmission electron microscopy
+    EMDB: Electron Microscopy Data Bank
+    EMPAD: electron microscope pixel array detector
+    EMPIAR: Electron Microscopy Public Image Archive
+    FAIR: findable, accessible, interoperable, reusable
+    FEG: field emission gun
+    FIB: focused ion beam
+    HAADF: high-angle annular dark field
+    HDF5: Hierarchical Data Format version 5
+    HRSTEM: high-resolution scanning transmission electron microscopy
+    HRTEM: high-resolution transmission electron microscopy
+    ICSD: Inorganic Crystal Structure Database
+    iDPC: integrated differential phase contrast
+    IUCr: International Union of Crystallography
+    MicroED: microcrystal electron diffraction
+    microED: microcrystal electron diffraction
+    mmCIF: macromolecular Crystallographic Information File
+    MTF: modulation transfer function
+    NBED: nanobeam electron diffraction
+    PACBED: position-averaged convergent beam electron diffraction
+    PDB: Protein Data Bank
+    PDF: pair distribution function
+    PED: precession electron diffraction
+    PSF: point spread function
+    SAD: selected area diffraction
+    SAED: selected area electron diffraction
+    SEM: scanning electron microscopy
+    SNR: signal-to-noise ratio
+    SPA: single-particle analysis
+    STEM: scanning transmission electron microscopy
+    TEM: transmission electron microscopy
+    XEDS: X-ray energy-dispersive spectroscopy
   exclude:
     - README.md
     - LICENSE
@@ -91,6 +95,10 @@ project:
       children:
         - file: bio-tem/spa-cryo-em.md
         - file: bio-tem/cryo-tomography.md
+    - file: crystallography.md
+      children:
+        - file: crystallography/microed.md
+        - file: crystallography/3ded.md
     - file: materials-tem.md
       children:
         - file: materials-tem/methods.md
@@ -102,7 +110,7 @@ project:
         - file: framework/data.md
         - file: framework/metadata.md
         - file: framework/formats.md
-        - file: framework/reconstruction.md
+        - file: framework/computational-imaging.md
         - file: framework/analysis.md
         - file: framework/plotting.md
         - file: framework/benchmarks.md

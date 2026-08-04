@@ -19,6 +19,8 @@ There are many different kinds of imaging data in TEM. In the plane-wave illumin
 
 In STEM, we can also use a variety of different detectors. A BF-STEM image integrates the entire unscattered beam, while an ABF-STEM image uses a donut shaped detector to record the outer edge of the unscattered beam. An ADF-STEM image records part of the scattered electron beam, and can be further divided into low-angle, medium-angle, and high-angle ADF (LAADF, MAADF, and HAADF).
 
+STEM imaging also includes multipixel detectors. These could be combined BF / ADF detectors, or segmented rings such as those used in DPC imaging.
+
 We can also record more exotic data channels. For example, in EBIC we use specialized detectors to record . . .  etc., any other examples
 
 Researchers often will record a sequence of images. These can be for statistical reasons, or to stitch together many individual micrographs into a larger whole. Sometimes they will change microscope parameters, for example a focal series of HRTEM or STEM, or simply a time series while a stimulus such as heating or biasing is applied to the sample. These time series experiments are referred to as *in situ* or *operando* experiments.
