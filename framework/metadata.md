@@ -4,12 +4,68 @@ title: Metadata
 
 # Metadata
 
-expand
+A dataset without metadata is an array of numbers. The test a metadata package has to pass is simple: a competent stranger, given the file and nothing else, must be able to say what was measured, what the axes mean in physical units, and how hard the sample was hit.
+
+Almost no materials TEM dataset in circulation passes that test today.
 
 ## The minimal package
 
+Minimal means the fields you cannot interpret the array without. Everything else is desirable, and desirable fields do not get enforced.
+
+| Field | Example |
+|---|---|
+| Modality | `4D-STEM` |
+| Accelerating voltage | `300 kV` |
+| Instrument | `Thermo Fisher Spectra 300`, probe corrected, lab instrument ID |
+| Axis order and units | `(scan_y, scan_x, k_y, k_x)`, explicit, no convention assumed |
+| Real-space sampling | `0.24 Å` per scan step |
+| Reciprocal sampling | `0.82 mrad` per detector pixel |
+| Convergence semi-angle | `25.1 mrad` |
+| Collection angles | inner and outer, per detector, in mrad |
+| Dose | fluence in e⁻/Å² and dose rate in e⁻/Å²/s |
+| Sample | identifier resolving to a preparation record |
+| Acquisition | date, operator, institution |
+| Writer | software name and version that produced the file |
+
+Twelve fields. Every one is known to the instrument or the operator at acquisition time, and every one is routinely lost.
+
 ## Modality and acquisition parameters
+
+Beyond the minimal package, each modality has a small set of parameters that determine what the numbers mean.
+
+**Imaging.** Defocus and the measured aberration coefficients, with the method and date of the aberration measurement. Nominal magnification, dwell or exposure time, binning, scan shape and step size, scan rotation, and flyback time.
+
+**Diffraction and 4D-STEM.** Camera length as calibrated rather than as labelled, DP center in detector pixels, detector orientation relative to the scan frame, and whether the detector ran in counting or integrating mode. For precession, the precession angle and frequency.
+
+**Spectroscopy.** For EELS, the dispersion in eV per channel, the zero-loss position, the collection semi-angle, the spectrometer entrance aperture, and the energy resolution as measured from the zero-loss peak. For XEDS, the detector solid angle and take-off angle, the elevation and azimuth, and the quantification model with its k-factors or cross sections.
+
+**Tomography and time series.** The tilt or time value of every frame, in acquisition order, along with whatever stimulus was applied. A tilt series stored without its per-frame angles is not recoverable.
 
 ## Required calibrations
 
+This is where reproducibility usually fails, and it fails quietly.
+
+A nominal value read off the instrument is not a calibration. Nominal magnification can be several percent from truth, nominal camera length worse, and both drift with lens history. Strain measured to 0.1% from a diffraction pattern calibrated to 3% is a number with no meaning.
+
+Every calibration should carry four things: the value, the method used to obtain it, an uncertainty, and the date it was performed.
+
+| Calibration | Why it is required |
+|---|---|
+| Real-space pixel size | Every length, spacing, and area in the paper |
+| Reciprocal pixel size | Every scattering angle, *d*-spacing, and strain value |
+| Scan rotation | Relative orientation of scan and detector frames; sign errors flip DPC and strain maps |
+| DP center | Center of mass, DPC, radial integration, and virtual detector placement |
+| Detector gain and dark reference | Any quantitative intensity, including thickness from ADF |
+| Counts to electrons | Dose, SNR, and Poisson noise models |
+| EELS dispersion and zero loss | Every energy in the spectrum |
+| Scan distortion and drift | Real-space accuracy at atomic resolution |
+
 ## Provenance: sample, instrument, operator
+
+Provenance is what lets a reader trace a number back to a physical object and a moment in time.
+
+**Sample.** Composition, source or synthesis route, and preparation method with its parameters. FIB thinning, ion milling, electropolishing, and drop casting each leave signatures in the data, and a reader who does not know which was used cannot separate artifact from result.
+
+**Instrument.** Make, model, and the specific machine, since two instruments of the same model do not behave identically. Corrector state, holder type, and any non-standard optics such as a monochromator, phase plate, or aperture.
+
+**Operator and session.** Who recorded the data, when, and under what session identifier. Session identity matters more than it sounds: it is what groups a dataset with the reference images, the calibration measurements, and the control sample recorded alongside it. Those companions are usually the only evidence that a measurement was sound, and they are almost always discarded.

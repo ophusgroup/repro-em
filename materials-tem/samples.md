@@ -4,24 +4,28 @@ title: Samples
 
 # Samples
 
-## Hard Matter
+The sample is the part of the experiment least likely to be recorded properly, and often the part that most determines whether a result can be reproduced. Two groups can run the same instrument at the same settings and disagree completely because one prepared by FIB and the other by crushing.
 
-alloys, ceramics / oxides, 
+## Hard matter
 
+Alloys, ceramics and oxides, semiconductors, catalysts, 2D materials, and quantum materials.
 
+These are usually the most beam-stable samples, so we can afford long dwell times, focal series, tilt series, and repeated measurement of the same region. That stability is what makes them the natural starting point for a reproducibility framework. A measurement that cannot be repeated on a stable oxide will not be repeatable on anything.
 
-## Soft Matter
+Preparation matters more than it is usually credited. FIB lift-out introduces gallium implantation, amorphous surface damage, and thickness variation along the lamella. Crushed powders give clean surfaces but uncontrolled orientations and thicknesses. Electropolishing and ion milling each leave their own artifacts. Sample thickness in particular is required to interpret almost any quantitative measurement, and is frequently neither measured nor reported.
 
+## Soft matter
 
-Experiments on this class of materials are often defined by their minor or extreme sensitivty to the electron beam.
+Organic molecules, macromolecules and polymers, solid electrolytes, halide perovskites, and metal-organic frameworks.
 
-Organic, molecules, macromolecules / polymers, solid electrolytes / halid perovskites, etc.
+Experiments on this class of materials are often defined by their minor or extreme sensitivity to the electron beam. The measurement changes the sample while it is being made, so total dose and dose rate are not optional metadata. A HAADF image of a halide perovskite at 10 e⁻/Å² and the same image at 1000 e⁻/Å² are measurements of two different materials.
 
-
+Dose limits also force the low-SNR regime, and low SNR is where denoising and reconstruction choices begin to determine the result. This is exactly where held-out validation earns its keep. See [benchmarks](../framework/benchmarks.md).
 
 ## Liquids
 
-Liquid samples are even more likely to be modified by interaction with the electron beam (bubbles, radicals, etc.)
+Samples in water or other solvents, ionic liquids, and liquid electrolytes, usually in a sealed cell or a graphene liquid cell.
 
-Samples in water or other solvents, ionic liquids, liquid electrolytes, etc. 
+Liquid samples are even more likely to be modified by interaction with the electron beam. Radiolysis generates radicals and gas bubbles, shifts local pH, and can drive the nucleation and growth we are trying to observe. The required metadata expands to include cell geometry, window material and thickness, liquid path length, flow rate, and applied potential.
 
+Liquid and *in situ* experiments are the hardest case for reproducibility, because the specimen is a system evolving in time rather than a fixed structure. The full time series is the measurement, and publishing one extracted frame discards it.

@@ -26,6 +26,7 @@ project:
     4D-STEM: four-dimensional scanning transmission electron microscopy
     4DSTEM: four-dimensional scanning transmission electron microscopy
     ABF: annular bright field
+    abTEM: ab initio TEM image simulation code
     ADF: annular dark field
     AI: artificial intelligence
     API: application programming interface
@@ -41,6 +42,7 @@ project:
     CTF: contrast transfer function
     DED: direct electron detector
     DF: dark field
+    DFT: density functional theory
     DOI: digital object identifier
     DP: diffraction pattern
     DPC: differential phase contrast
@@ -55,6 +57,7 @@ project:
     FAIR: findable, accessible, interoperable, reusable
     FEG: field emission gun
     FIB: focused ion beam
+    FSC: Fourier shell correlation
     HAADF: high-angle annular dark field
     HDF5: Hierarchical Data Format version 5
     HRSTEM: high-resolution scanning transmission electron microscopy
@@ -62,10 +65,14 @@ project:
     ICSD: Inorganic Crystal Structure Database
     iDPC: integrated differential phase contrast
     IUCr: International Union of Crystallography
+    LAADF: low-angle annular dark field
+    MAADF: medium-angle annular dark field
     MicroED: microcrystal electron diffraction
     microED: microcrystal electron diffraction
     mmCIF: macromolecular Crystallographic Information File
+    MOF: metal-organic framework
     MTF: modulation transfer function
+    MULTEM: GPU multislice simulation code
     NBED: nanobeam electron diffraction
     PACBED: position-averaged convergent beam electron diffraction
     PDB: Protein Data Bank
@@ -79,6 +86,7 @@ project:
     SPA: single-particle analysis
     STEM: scanning transmission electron microscopy
     TEM: transmission electron microscopy
+    wwPDB: worldwide Protein Data Bank
     XEDS: X-ray energy-dispersive spectroscopy
   exclude:
     - README.md
