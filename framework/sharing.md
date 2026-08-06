@@ -4,9 +4,9 @@ title: Sharing data
 
 # Sharing data
 
-Archiving data and sharing data are different problems. An archive has to preserve the measurement; sharing has to get someone to look at it. A dataset that is deposited correctly and never opened has satisfied the letter of every data policy and accomplished nothing.
+Archiving data and sharing data are related but distinct problems, in that an archive has to preserve the measurement while sharing has to make someone likely to look at it. A dataset that is deposited correctly and never opened satisfies the letter of every data policy without accomplishing very much.
 
-The gap is friction. If understanding a shared dataset requires installing a stack, learning a layout, and writing code before seeing a single image, almost no one will do it, and the data is public in name only.
+The difference between the two is largely a matter of friction. If understanding a shared dataset requires installing a software stack, learning an undocumented layout, and writing code before a single image can be seen, then very few readers will attempt it and the data is public only in name.
 
 ## Interactive figures
 
@@ -23,6 +23,18 @@ Every such figure should link back to the raw data and to the code that produced
 Interactive exploration of a terabyte dataset does not require moving a terabyte. Chunked formats served over HTTP let a viewer fetch only the chunks currently on screen, which is exactly what Zarr was designed for. See [file formats](formats.md).
 
 This changes what is practical to share. Full 4D-STEM datasets, complete tilt series, and whole *in situ* time series can be browsable from a link, with the reader downloading megabytes to look and the full archive still there for anyone who wants it.
+
+## Tutorials and companion sites
+
+For method developers, an example dataset paired with a runnable tutorial does more for adoption than any amount of documentation, because it removes the step where a new user has to assemble a working example themselves. The [quantEM tutorials](https://github.com/electronmicroscopy/quantem-tutorials) are one example of this pattern.
+
+The same applies to individual papers. A companion website built from GitHub Pages costs very little to produce, and it gives readers somewhere to reach the data, the code, the tutorials, and the interactive figures without going through a publisher. This site is itself an example, and large language models have made assembling one considerably faster.
+
+## Journals are beginning to catch up
+
+Interactive publication no longer has to sit outside the literature. [Elemental Microscopy](https://elementalmicroscopy.org), published by the Microscopy Society of America, is a free web-first journal of reviews and tutorials in which articles carry live figures and runnable code rather than static images, built on open source scientific publishing tooling.
+
+This matters for the argument on this page because it removes the excuse that interactive work has nowhere to go. A reader can now be given an article in which the figure they are looking at is generated from the deposited data, in the journal itself, rather than in a supplement or on a lab server that will disappear.
 
 ## Where it lives
 

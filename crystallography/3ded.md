@@ -6,7 +6,7 @@ title: 3DED
 
 3DED is the same measurement as MicroED, made by a different community with different vocabulary. Where MicroED came from structural biology, 3DED grew out of the materials and chemical crystallography side, and is applied to zeolites, MOFs, minerals, pharmaceuticals, and inorganic phases.
 
-The naming is fragmented. The same experiment appears as 3DED, continuous rotation electron diffraction, electron diffraction tomography, automated diffraction tomography, and precession-assisted variants, depending on the group and the decade. Structures usually go to the CSD or the COD rather than the PDB.
+The naming is correspondingly fragmented, and the same experiment appears as 3DED, continuous rotation electron diffraction, electron diffraction tomography, automated diffraction tomography, and precession-assisted variants, depending on the group and the decade. Structures usually go to the CSD or the COD rather than the PDB.
 
 That fragmentation is itself worth noting. One physical measurement acquired at least five names and two deposition venues, purely because two communities developed it in parallel. Materials TEM has the same problem across most of its modalities, and it is a reproducibility problem rather than a cosmetic one, because a reader searching for comparable measurements cannot find them.
 

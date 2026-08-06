@@ -6,13 +6,13 @@ title: Computational imaging
 
 Almost every result published in this field has been computed. Even a "raw" micrograph has been gain corrected, dark subtracted, scaled, and cropped before anyone looks at it. There is no clean line between data and reconstruction, only a continuum of how much the answer depends on the algorithm.
 
-That continuum is the reason computational imaging cannot be treated as a specialist topic. The question is not whether an experiment used computation. It is how far the published figure sits from the measurement, and whether the reader can retrace the distance.
+That continuum is the reason computational imaging cannot be treated as a specialist topic. The useful question is how far the published figure sits from the measurement, and whether a reader can retrace the distance.
 
 ## Simple
 
 A cropped field of view. Rescaled intensity, corrected calibrations, a rotation, a bin. Operations that a reader would reproduce identically given the same input, and that change what the image shows without changing what it means.
 
-These are still transformations, and they still belong in the record. A crop is a selection, and selection is where bias enters. See [plotting](plotting.md).
+These are still transformations, and they still belong in the record. A crop is a selection, and selection is where bias enters. See [plotting](analysis.md#figures-as-derived-data).
 
 ## Intermediate
 
@@ -26,7 +26,7 @@ SPA cryo-EM, MicroED and 3DED, electron tomography, and ptychography.
 
 These are inverse problems. We do not measure the object, we measure something the object produced, and we recover the object by iteratively adjusting a model until its predictions match the measurements. The reconstruction is a solution consistent with the data, and it is not unique. Different initializations, different regularization, and different stopping points give different answers, all of which fit the measurements to within noise.
 
-This is what makes the complex end qualitatively different. A reader cannot judge the result by looking at it, because a wrong reconstruction and a right one are both smooth, plausible images. Validation has to be quantitative. See [benchmarks](benchmarks.md).
+This is what makes the complex end qualitatively different. A reader cannot judge the result by looking at it, because a wrong reconstruction and a right one are both smooth, plausible images, so validation has to be quantitative. See [benchmarks](benchmarks.md).
 
 ## What has to be published
 
@@ -44,4 +44,4 @@ For anything at the intermediate level or beyond:
 
 ## Linking back to the source
 
-A tomogram or a ptychographic phase image is a derived product, and it should be published with a resolvable link to the data it came from and the code that made it. Deposited without that link, it is a picture. With it, it is a measurement someone else can check.
+A tomogram or a ptychographic phase image is a derived product, and it should be published with a resolvable link to the data it came from and the code that made it. That link is what allows a reader to treat the result as a measurement they can check rather than an image they have to accept.

@@ -25,9 +25,9 @@ The standard reference for the numerical methods is Kirkland's book ([Kirkland, 
 
 Simulations occupy an unusual position in the reproducibility argument, because they cut both ways.
 
-They are the cleanest source of ground truth we have. A simulated dataset has a known answer, which makes it the only way to score a reconstruction algorithm against truth rather than against another algorithm. Every benchmark suite this site argues for would be built on simulations. See [benchmarks](../framework/benchmarks.md).
+They are a reliable source of ground truth. A simulated dataset has a known answer, which allows a reconstruction algorithm to be scored against truth rather than against another algorithm, and the benchmark suites this site argues for would largely be built on simulations. See [benchmarks](../framework/benchmarks.md).
 
-They are also the reason authenticity is now a problem. We are good enough at this that a simulated micrograph with realistic noise, drift, and residual aberrations is difficult to distinguish from a measurement by eye. That capability is a genuine achievement and it is also the threat model. See [validated detectors](../framework/detectors.md).
+They also contribute to the authenticity problem. We are good enough at this that a simulated micrograph with realistic noise, drift, and residual aberrations is difficult to distinguish from a measurement by eye, and that same capability defines the threat model. See [validated detectors](../framework/detectors.md).
 
 ## What a published simulation has to include
 
@@ -35,6 +35,6 @@ A simulation is fully determined by its inputs, so there is no excuse for one th
 
 The minimum is the atomic structure file, the potential parameterization, the slice thickness, the real and reciprocal space sampling, the number and configuration of frozen phonons with the thermal displacement model, the full aberration set, the detector geometry, and the code with its version.
 
-Sampling and slice thickness deserve specific mention because they are convergence parameters rather than physical ones, and an under-converged simulation produces a plausible wrong answer rather than an obvious failure. Reporting the convergence test costs a paragraph.
+Sampling and slice thickness deserve specific mention because they are convergence parameters rather than physical ones, and an under-converged simulation produces a plausible wrong answer rather than an obvious failure. Reporting the convergence test takes a paragraph and removes the ambiguity.
 
-The cleanest way to satisfy all of this is to publish the script. A simulation script with a pinned environment is a complete, executable specification, and it is shorter than the paragraph describing it.
+A practical way to satisfy all of this is to publish the script. A simulation script with a pinned environment is a complete, executable specification, and it is usually shorter than the paragraph describing it.

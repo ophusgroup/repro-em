@@ -4,7 +4,7 @@ title: Samples
 
 # Samples
 
-The sample is the part of the experiment least likely to be recorded properly, and often the part that most determines whether a result can be reproduced. Two groups can run the same instrument at the same settings and disagree completely because one prepared by FIB and the other by crushing.
+Sample preparation is frequently the least well documented part of a TEM experiment, and it often has a large effect on whether a result can be reproduced. Two groups running the same instrument at the same settings can disagree substantially because one prepared the specimen by FIB lift-out and the other by crushing.
 
 ## Hard matter
 
@@ -20,7 +20,9 @@ Organic molecules, macromolecules and polymers, solid electrolytes, halide perov
 
 Experiments on this class of materials are often defined by their minor or extreme sensitivity to the electron beam. The measurement changes the sample while it is being made, so total dose and dose rate are not optional metadata. A HAADF image of a halide perovskite at 10 e⁻/Å² and the same image at 1000 e⁻/Å² are measurements of two different materials.
 
-Dose limits also force the low-SNR regime, and low SNR is where denoising and reconstruction choices begin to determine the result. This is exactly where held-out validation earns its keep. See [benchmarks](../framework/benchmarks.md).
+Dose limits also force the low-SNR regime, and low SNR is where denoising and reconstruction choices begin to determine the result. This is exactly where held-out validation earns its keep.
+
+ See [benchmarks](../framework/benchmarks.md).
 
 ## Liquids
 
@@ -28,4 +30,4 @@ Samples in water or other solvents, ionic liquids, and liquid electrolytes, usua
 
 Liquid samples are even more likely to be modified by interaction with the electron beam. Radiolysis generates radicals and gas bubbles, shifts local pH, and can drive the nucleation and growth we are trying to observe. The required metadata expands to include cell geometry, window material and thickness, liquid path length, flow rate, and applied potential.
 
-Liquid and *in situ* experiments are the hardest case for reproducibility, because the specimen is a system evolving in time rather than a fixed structure. The full time series is the measurement, and publishing one extracted frame discards it.
+Liquid and *in situ* experiments are among the harder cases for reproducibility, because the specimen is a system evolving in time rather than a fixed structure. The full time series is the measurement, and publishing one extracted frame discards it.

@@ -4,9 +4,7 @@ title: Metadata
 
 # Metadata
 
-A dataset without metadata is an array of numbers. The test a metadata package has to pass is simple: a competent stranger, given the file and nothing else, must be able to say what was measured, what the axes mean in physical units, and how hard the sample was hit.
-
-Almost no materials TEM dataset in circulation passes that test today.
+Without metadata, a dataset is only an array of numbers, and the test that a metadata package has to pass is a practical one. A researcher outside the original group, given the file and nothing else, should be able to determine what was measured, what the axes mean in physical units, and what dose the sample received. Very few materials TEM datasets currently in circulation would pass this test.
 
 ## The minimal package
 
@@ -27,7 +25,7 @@ Minimal means the fields you cannot interpret the array without. Everything else
 | Acquisition | date, operator, institution |
 | Writer | software name and version that produced the file |
 
-Twelve fields. Every one is known to the instrument or the operator at acquisition time, and every one is routinely lost.
+Each of these twelve fields is known to the instrument or the operator at acquisition time, and each is routinely lost before publication.
 
 ## Modality and acquisition parameters
 
@@ -46,6 +44,16 @@ Beyond the minimal package, each modality has a small set of parameters that det
 This is where reproducibility usually fails, and it fails quietly.
 
 A nominal value read off the instrument is not a calibration. Nominal magnification can be several percent from truth, nominal camera length worse, and both drift with lens history. Strain measured to 0.1% from a diffraction pattern calibrated to 3% is a number with no meaning.
+
+### An example: the scan rotation
+
+4D-STEM files do not record the rotation between the scan coordinate system and the diffraction coordinate system. This is a single angle, set by the lens excitations and therefore dependent on camera length and lens history, and it relates directions in real space to directions in reciprocal space.
+
+It is known at the microscope, and no widely used format writes it. Every group that needs it recovers it afterwards from the data itself, typically by rotating until the curl of the measured field is minimized. That procedure has a 180° ambiguity, resolved by deciding whether curl or divergence should vanish, and choosing wrong reverses the sign of the result.
+
+The consequence is the failure mode that matters most for reproducibility. Without the scan rotation, DPC vectors point in the wrong direction, strain axes are rotated, and orientation maps are wrong, and none of this announces itself. The analysis runs to completion and produces a confident answer.
+
+This is also exactly the kind of thing an automated validation service would catch, in the same way that checkCIF catches inconsistent crystallographic data. See [learning from crystallography](../crystallography.md).
 
 Every calibration should carry four things: the value, the method used to obtain it, an uncertainty, and the date it was performed.
 
@@ -69,3 +77,4 @@ Provenance is what lets a reader trace a number back to a physical object and a 
 **Instrument.** Make, model, and the specific machine, since two instruments of the same model do not behave identically. Corrector state, holder type, and any non-standard optics such as a monochromator, phase plate, or aperture.
 
 **Operator and session.** Who recorded the data, when, and under what session identifier. Session identity matters more than it sounds: it is what groups a dataset with the reference images, the calibration measurements, and the control sample recorded alongside it. Those companions are usually the only evidence that a measurement was sound, and they are almost always discarded.
+

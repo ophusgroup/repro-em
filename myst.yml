@@ -38,8 +38,11 @@ project:
     COD: Crystallography Open Database
     cryo-EM: cryogenic electron microscopy
     cryo-ET: cryogenic electron tomography
+    cryoDRGN: cryo-EM deep reconstructing generative networks
+    cryoSPARC: cryo-EM single particle ab initio reconstruction and classification
     CSD: Cambridge Structural Database
     CTF: contrast transfer function
+    CTFFIND4: CTF estimation program
     DED: direct electron detector
     DF: dark field
     DFT: density functional theory
@@ -50,6 +53,7 @@ project:
     EBIC: electron beam induced current
     EBSD: electron backscatter diffraction
     EELS: electron energy-loss spectroscopy
+    EER: electron event representation
     EFTEM: energy-filtered transmission electron microscopy
     EMDB: Electron Microscopy Data Bank
     EMPAD: electron microscope pixel array detector
@@ -71,14 +75,19 @@ project:
     microED: microcrystal electron diffraction
     mmCIF: macromolecular Crystallographic Information File
     MOF: metal-organic framework
+    MRC: map and image format from the MRC Laboratory of Molecular Biology
+    MRCZ: compressed MRC format
     MTF: modulation transfer function
     MULTEM: GPU multislice simulation code
     NBED: nanobeam electron diffraction
     PACBED: position-averaged convergent beam electron diffraction
     PDB: Protein Data Bank
+    PDBx: PDB exchange dictionary
     PDF: pair distribution function
     PED: precession electron diffraction
     PSF: point spread function
+    py4DSTEM: open source 4D-STEM analysis package
+    RELION: regularized likelihood optimization
     SAD: selected area diffraction
     SAED: selected area electron diffraction
     SEM: scanning electron microscopy
@@ -93,7 +102,6 @@ project:
     - LICENSE
   toc:
     - file: index.md
-    - file: manifesto.md
     - file: landscape.md
       children:
         - file: landscape/academia.md
@@ -120,19 +128,12 @@ project:
         - file: framework/formats.md
         - file: framework/computational-imaging.md
         - file: framework/analysis.md
-        - file: framework/plotting.md
         - file: framework/benchmarks.md
         - file: framework/sharing.md
         - file: framework/publishing.md
         - file: framework/chain-of-custody.md
     - file: objections.md
     - file: calls-to-action.md
-      children:
-        - file: calls-to-action/academia.md
-        - file: calls-to-action/industry.md
-        - file: calls-to-action/vendors.md
-        - file: calls-to-action/funding-agencies.md
-        - file: calls-to-action/journals-publishers.md
     - file: acknowledgements.md
 site:
   template: book-theme
@@ -147,7 +148,3 @@ site:
   nav:
     - title: FAIR Data
       url: https://www.go-fair.org/fair-principles/
-    - title: COLab
-      url: https://colab.stanford.edu/
-    - title: quantEM
-      url: https://electronmicroscopy.github.io/quantem-docs/
