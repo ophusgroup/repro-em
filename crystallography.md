@@ -16,6 +16,13 @@ None of these required agreement on a single kind of measurement, which is the o
 
 The Crystallographic Information File is a self-describing text format in which every value is tagged with a name drawn from a published dictionary, introduced by [Hall, Allen and Brown (1991)](https://doi.org/10.1107/S010876739101067X). Because the dictionary defines the tags, a program can determine whether a file contains the values it should, without knowing anything about the particular study.
 
+:::{figure} assets/screenshots/checkcif.png
+:alt: The checkCIF upload form, described as a service of the International Union of Crystallography
+:class: rpe-shot
+
+checkCIF. A crystallographer uploads a CIF and receives an independent validation report. Materials TEM has no equivalent service.
+:::
+
 checkCIF builds directly on that dictionary. It is a free service run by the IUCr that takes a CIF and returns a validation report of geometric, statistical, and consistency tests. Alerts are graded by severity, where level A indicates a potentially serious problem with the data, level B a potential problem, level C a minor issue, and level G is informational. Authors submitting to *Acta Crystallographica* Sections C and E are required to run checkCIF before submission and to respond to the alerts it returns.
 
 Two features of this design are relevant to us. The validation is computed by a service other than the author, so a reviewer can read a report generated from the deposited data rather than relying on a methods section. Alerts are also treated as questions rather than accusations, since they routinely flag genuinely unusual structures, and the author's response is published alongside the entry. A validation regime that treated every flag as misconduct would likely be resisted, while one that expects an explanation has proven workable over many years.
@@ -25,6 +32,13 @@ Materials TEM currently has no equivalent of checkCIF. There is no service that 
 ## Where structures are deposited
 
 The community sorted itself by molecule size rather than by technique. Macromolecular structures are deposited in the PDB, and the wwPDB OneDep system now handles 3DED and MicroED explicitly, collecting entries through the macromolecular crystallography framework with additional metadata describing electron diffraction collection and processing. Small-molecule structures are deposited in the CSD, or in the COD, which is fully open. Inorganic structures are deposited in the ICSD.
+
+:::{figure} assets/screenshots/cod.png
+:alt: The Crystallography Open Database front page, an open-access collection of crystal structures
+:class: rpe-shot
+
+The Crystallography Open Database, which holds over half a million structures in the public domain under CC0.
+:::
 
 The practical result is that a structure carries an accession code, and a paper reporting a structure without one is not published. That requirement is what gives the technical standards their force.
 

@@ -34,6 +34,13 @@ The same applies to individual papers. A companion website built from GitHub Pag
 
 Interactive publication no longer has to sit outside the literature. [Elemental Microscopy](https://elementalmicroscopy.org), published by the Microscopy Society of America, is a free web-first journal of reviews and tutorials in which articles carry live figures and runnable code rather than static images, built on open source scientific publishing tooling.
 
+:::{figure} ../assets/screenshots/elemental-microscopy.png
+:alt: An article listing in Elemental Microscopy, showing a microscopy figure beside the article title and authors
+:class: rpe-shot
+
+An article in Elemental Microscopy. Figures in this journal are live rather than static, and the articles carry the code that produced them.
+:::
+
 This matters for the argument on this page because it removes the excuse that interactive work has nowhere to go. A reader can now be given an article in which the figure they are looking at is generated from the deposited data, in the journal itself, rather than in a supplement or on a lab server that will disappear.
 
 ## Where it lives

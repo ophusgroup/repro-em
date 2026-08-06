@@ -50,6 +50,20 @@ An important feature of this arrangement is that the metric is produced by the r
 
 Three archives divide the work between them. The EMDB holds 3D maps, the PDB holds fitted atomic coordinates, and EMPIAR holds raw movies and intermediate data. Deposition to the EMDB and PDB is required for publication, while deposition to EMPIAR remains voluntary.
 
+:::{figure} ../assets/screenshots/2026-08-04-PDB.jpg
+:alt: The Protein Data Bank web interface
+:class: rpe-shot
+
+The PDB, which has required deposition as a condition of publication for long enough that the requirement is no longer controversial.
+:::
+
+:::{figure} ../assets/screenshots/2026-08-04-empiar-1.jpg
+:alt: The EMPIAR archive interface, holding raw electron microscopy image data
+:class: rpe-shot
+
+EMPIAR holds the raw movies and intermediate data. Deposition here is voluntary, which is why the raw data behind most published maps was never archived.
+:::
+
 Since February 2022, depositing half-maps has been mandatory for single particle entries, and they must be unfiltered, unmasked, and unsharpened. This requirement is worth adopting elsewhere, because the archive asks not only for the result but for the specific intermediate products that allow the validation to be recomputed independently. The wwPDB then generates a validation report during biocuration, covering the map and, where a model is present, the agreement between map and model, and that report remains attached to the entry for reviewers and readers.
 
 ## File formats

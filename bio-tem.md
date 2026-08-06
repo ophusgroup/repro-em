@@ -10,6 +10,13 @@ For structural biology, the PDB and the EMDB provide stable identifiers, communi
 
 These resources normalized the idea that preservation and validation are essential parts of characterization science.
 
+:::{figure} assets/screenshots/2026-08-04-EMDB.jpg
+:alt: The EMDB search interface, showing 79,568 entries and a chart of entries released per year for EMDB and EMPIAR
+:class: rpe-shot
+
+The EMDB holds nearly 80,000 entries, and the growth curve is the reason this comparison is worth making. The same chart also shows the limit of the system: EMDB depositions climb steeply while EMPIAR, which holds the raw data behind them, stays close to the axis.
+:::
+
 ## What made it work
 
 The archives are the visible part of the system, and three further mechanisms are what hold it together.

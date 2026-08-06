@@ -364,3 +364,22 @@ article table td:first-child,
 article table th:first-child {
   white-space: nowrap;
 }
+
+/* ---------------------------------------------------------------
+   Screenshots of external services. These are light-mode captures,
+   so give them a white plate and a soft border, otherwise they read
+   as glaring rectangles against the dark theme.
+   --------------------------------------------------------------- */
+.rpe-shot img,
+img.rpe-shot {
+  background: #fff;
+  padding: 0.4rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  max-width: 100%;
+  height: auto;
+}
+html.dark .rpe-shot img,
+html.dark img.rpe-shot {
+  border-color: rgba(255, 255, 255, 0.16);
+}

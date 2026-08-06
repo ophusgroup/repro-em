@@ -146,5 +146,7 @@ site:
     outline_maxdepth: 2
     hide_footer_links: true
   nav:
+    - title: Slides
+      url: https://drive.google.com/file/d/1JGWoJYJzaVPr4uT1Qf1_Lg_v9heBbHAK/view?usp=sharing
     - title: FAIR Data
       url: https://www.go-fair.org/fair-principles/

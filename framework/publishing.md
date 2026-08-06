@@ -20,6 +20,22 @@ Availability also decays with time. Across 516 papers spanning two decades, the 
 
 Data must therefore be deposited at publication, while it still exists and while someone still knows what it is.
 
+The infrastructure for this already exists for materials data. General-purpose repositories such as Zenodo and Figshare issue a DOI for any dataset, and domain repositories such as the Materials Data Facility handle the sizes we produce.
+
+:::{figure} ../assets/screenshots/mdf-dataset.png
+:alt: A Materials Data Facility record for a deposited multibeam electron diffraction dataset
+:class: rpe-shot
+
+A 4D-STEM dataset deposited in the Materials Data Facility, citable and retrievable by anyone. Nothing about materials TEM prevents this.
+:::
+
+:::{figure} ../assets/screenshots/figshare-deposition.png
+:alt: A Figshare record for a deposited dataset supporting a published paper, with view and download counts
+:class: rpe-shot
+
+A dataset deposited on Figshare alongside its paper. The view and download counts are worth noticing, since they are evidence that deposited data does get used.
+:::
+
 ## Dark data
 
 It's an open secret that almost all microscopy data ever recorded is unpublished. Much of this data is useless, but some of it is not. Authors should not publish a "representative micrograph" but rather publish the full range of recorded data so that readers can judge for themselves.
