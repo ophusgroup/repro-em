@@ -1,0 +1,40 @@
+# Citation metadata for this repository.
+# GitHub renders this as a "Cite this repository" button, and Zenodo reads it
+# when minting a DOI from a release. Version and date-released are filled in
+# from the git tag by Zenodo, so they are deliberately not pinned here.
+cff-version: 1.2.0
+message: "If you refer to this material, please cite it as below."
+type: software
+title: "repro-EM: a reproducibility framework for materials electron microscopy"
+abstract: >-
+  Companion site for the Microscopy & Microanalysis 2026 invited talk "Open
+  Formats, Standard Metadata, and Benchmarks: A Reproducibility Framework for
+  Materials Electron Microscopy". Argues that materials electron microscopy
+  should adopt open self-describing file formats, a minimal standard metadata
+  package captured at acquisition, quantitative benchmarks including
+  cross-validation for inverse problems, and a cryptographic chain of custody
+  from signed detector output to the published figure.
+authors:
+  - family-names: Ophus
+    given-names: Colin
+    orcid: "https://orcid.org/0000-0003-2348-8558"
+    affiliation: "Department of Materials Science and Engineering, Stanford University"
+    email: cophus@stanford.edu
+repository-code: "https://github.com/ophusgroup/repro-em"
+url: "https://ophusgroup.github.io/repro-em/"
+license: CC-BY-4.0
+keywords:
+  - electron microscopy
+  - reproducibility
+  - open data formats
+  - metadata standards
+  - benchmarks
+  - provenance
+  - chain of custody
+  - FAIR data
+# Once Zenodo has minted the DOI, add it here so the GitHub citation widget
+# and any downstream tooling pick it up:
+# identifiers:
+#   - type: doi
+#     value: 10.5281/zenodo.XXXXXXX
+#     description: Concept DOI, always resolves to the latest version

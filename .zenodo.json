@@ -1,0 +1,32 @@
+{
+  "title": "repro-EM: a reproducibility framework for materials electron microscopy",
+  "description": "<p>Companion site for the Microscopy &amp; Microanalysis 2026 invited talk <em>Open Formats, Standard Metadata, and Benchmarks: A Reproducibility Framework for Materials Electron Microscopy</em>.</p><p>Materials electron microscopy covers an unusually broad range of samples, measurements, and data dimensionalities, which has made community-wide standardization difficult. This resource argues that the mechanisms which worked for structural biology and crystallography do not depend on a common measurement, and can therefore be adopted here: open self-describing file formats with a documented, versioned layout specification; a minimal standard metadata package recorded at acquisition, including calibrations; quantitative benchmarks for data quality and reconstruction validity, including cross-validation against held-out measurements for inverse problems; and a cryptographic chain of custody running from signed detector output through to the published figure.</p>",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "creators": [
+    {
+      "name": "Ophus, Colin",
+      "affiliation": "Department of Materials Science and Engineering, Stanford University",
+      "orcid": "0000-0003-2348-8558"
+    }
+  ],
+  "keywords": [
+    "electron microscopy",
+    "reproducibility",
+    "open data formats",
+    "metadata standards",
+    "benchmarks",
+    "provenance",
+    "chain of custody",
+    "FAIR data"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://ophusgroup.github.io/repro-em/",
+      "relation": "isIdenticalTo",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ]
+}
