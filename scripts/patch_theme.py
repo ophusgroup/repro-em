@@ -22,7 +22,11 @@ import sys
 # With 30+ pages the fully-expanded sidebar runs several screens long, so
 # we keep the stock behaviour: a section is open only while you are inside
 # it. Set True to pin every top-level section open instead.
-KEEP_SECTIONS_EXPANDED = False
+"""Sidebar sections whose URL contains one of these strings are expanded on
+first paint instead of only while you are inside them. Empty list = the stock
+behaviour, where every section stays collapsed until visited. The framework is
+the spine of the site, so it is worth showing its steps without a click."""
+EXPAND_SECTIONS_MATCHING = ["framework"]
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 THEME = os.path.normpath(
@@ -236,7 +240,7 @@ INLINER = INLINER_MARK + _RUNTIME
 # cache header, so reusing a suffix means browsers keep replaying whatever
 # they cached under that name.
 CACHE_TAG = "RPE" + hashlib.sha1(
-    (INLINER + repr(KEEP_SECTIONS_EXPANDED)).encode()
+    (INLINER + repr(EXPAND_SECTIONS_MATCHING)).encode()
 ).hexdigest()[:6].upper()
 
 
@@ -251,10 +255,19 @@ PATTERN = re.compile(
 )
 
 
+MARKER = ".title||'')).indexOf('"
+
+
 def patched(src):
     def repl(m):
         s, o, hook, active, eff, nav, let_var, fn_args, heading = m.groups()
-        keep_open = f'({heading}.level===1||{active})'
+        # The TOC item exposes different fields in the server and client
+        # bundles, so match against url, id and title together.
+        key = f"(({heading}.url||'')+({heading}.id||'')+({heading}.title||''))"
+        tests = "||".join(
+            f"{key}.indexOf('{p}')>=0" for p in EXPAND_SECTIONS_MATCHING
+        )
+        keep_open = f'({tests}||{active})'
         return (
             f'[{s},{o}]={hook}.useState({keep_open});'
             f'(0,{eff}.useEffect)(()=>{{{nav}.state==="idle"&&{o}({keep_open})}},'
@@ -337,11 +350,11 @@ def main():
                 f.write(s)
         print("renamed entry.client + manifest (cache bust)")
 
-    if KEEP_SECTIONS_EXPANDED:
+    if EXPAND_SECTIONS_MATCHING:
         for path in TARGETS:
             with open(path) as f:
                 src = f.read()
-            if ".level===1||" in src:
+            if MARKER in src:
                 print(f"already patched: {os.path.relpath(path, THEME)}")
                 continue
             out, n = patched(src)
@@ -351,8 +364,9 @@ def main():
                 f.write(out)
             total += n
             print(f"patched {os.path.relpath(path, THEME)} ({n} site)")
+        print(f"sections expanded by default: {EXPAND_SECTIONS_MATCHING}")
     else:
-        print("TOC sections left collapsible (KEEP_SECTIONS_EXPANDED=False)")
+        print("TOC sections left collapsible (EXPAND_SECTIONS_MATCHING is empty)")
     print(f"done ({total} replacements)")
 
 

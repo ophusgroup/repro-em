@@ -10,6 +10,13 @@ Single particle analysis (SPA) determines a 3D density map by averaging over man
 
 The sample is vitrified on a grid, cooled quickly enough that the surrounding water forms amorphous ice rather than crystals. Grids are then screened, and usable regions are imaged by automated collection over a period of hours or days.
 
+:::{figure} ../assets/screenshots/cryoem-micrograph.jpg
+:alt: A cryo-EM micrograph of many particles in vitreous ice, above a row of 2D class averages
+:width: 60%
+
+A single micrograph, with 2D class averages below it. Each particle in the field of view is individually too noisy to interpret, and the class averages are what emerges after aligning and averaging thousands of them. Data from [Küçükoğlu et al., *Nat. Commun.* 2024](https://doi.org/10.1038/s41467-024-52403-5).
+:::
+
 Dose is the constraint that shapes the rest of the experiment. Each particle can absorb only a few tens of electrons per square Ångström before the structure of interest is destroyed, so individual images are dominated by noise and the structure appears only after averaging over many thousands of particles. Each exposure is recorded as a movie rather than a single frame, which allows beam-induced motion to be corrected afterwards. A single session typically produces thousands of micrographs, from which millions of individual particle images can be extracted.
 
 ## The computational pipeline

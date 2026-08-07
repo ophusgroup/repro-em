@@ -122,16 +122,16 @@ project:
         - file: materials-tem/simulations.md
     - file: framework.md
       children:
+        - file: framework/chain-of-custody.md
         - file: framework/detectors.md
         - file: framework/data.md
-        - file: framework/metadata.md
         - file: framework/formats.md
+        - file: framework/metadata.md
         - file: framework/computational-imaging.md
         - file: framework/analysis.md
         - file: framework/benchmarks.md
         - file: framework/sharing.md
         - file: framework/publishing.md
-        - file: framework/chain-of-custody.md
     - file: objections.md
     - file: calls-to-action.md
     - file: acknowledgements.md
