@@ -25,9 +25,9 @@ checkCIF. A crystallographer uploads a CIF and receives an independent validatio
 
 checkCIF builds directly on that dictionary. It is a free service run by the IUCr that takes a CIF and returns a validation report of geometric, statistical, and consistency tests. Alerts are graded by severity, where level A indicates a potentially serious problem with the data, level B a potential problem, level C a minor issue, and level G is informational. Authors submitting to *Acta Crystallographica* Sections C and E are required to run checkCIF before submission and to respond to the alerts it returns.
 
-Two features of this design are relevant to us. The validation is computed by a service other than the author, so a reviewer can read a report generated from the deposited data rather than relying on a methods section. Alerts are also treated as questions rather than accusations, since they routinely flag genuinely unusual structures, and the author's response is published alongside the entry. A validation regime that treated every flag as misconduct would likely be resisted, while one that expects an explanation has proven workable over many years.
+Two features of this design are relevant to us. The validation is computed by a service other than the author, so a reviewer reads a report generated from the deposited data rather than relying on a methods section. And alerts are treated as questions rather than accusations, with the author's response published alongside the entry, which is what has made the system workable over many years.
 
-Materials TEM currently has no equivalent of checkCIF. There is no service that would take a deposited 4D-STEM dataset and report that the convergence angle is inconsistent with the recorded diffraction pattern, or that the stated dose is not achievable at the stated dwell time and beam current. Checks of this kind are straightforward arithmetic on metadata we already claim to record.
+Materials TEM has no equivalent. No service would take a deposited 4D-STEM dataset and report that the convergence angle is inconsistent with the recorded diffraction pattern, or that the stated dose is not achievable at the stated dwell time and current. Checks of this kind are straightforward arithmetic on metadata we already claim to record.
 
 ## Where structures are deposited
 
@@ -46,7 +46,7 @@ The practical result is that a structure carries an accession code, and a paper 
 
 Deposited entries consist of models together with reduced intensities. For 3DED and MicroED this means that the diffraction movies themselves are not part of the required deposition. Groups that do publish frames typically use Zenodo, where a 3DED and MicroED community collects such datasets, but this remains a voluntary practice rather than a requirement.
 
-This distinction matters more for electron diffraction than for X-ray work. Because electrons scatter strongly, the kinematical approximation relating measured intensity to structure factor holds only approximately, and dynamical refinement changes the result. The reduction from frames to intensities is therefore model-dependent, and two groups reducing the same frames can reasonably disagree. Without the frames, that disagreement cannot be examined.
+This matters more for electron diffraction than for X-ray work. Electrons scatter strongly, so the kinematical approximation holds only approximately and dynamical refinement changes the result. The reduction from frames to intensities is therefore model-dependent, two groups reducing the same frames can reasonably disagree, and without the frames that disagreement cannot be examined.
 
 For materials TEM we should do both, validating the derived product and archiving the raw measurement, rather than treating the two as alternatives. See [data](framework/data.md).
 
@@ -54,6 +54,6 @@ For materials TEM we should do both, validating the derived product and archivin
 
 The 3DED community adopted the existing X-ray software stack, which is part of why the technique matured quickly. Data reduction is typically performed with XDS, DIALS, or PETS2, which handle peak finding, unit cell determination, geometry refinement, and intensity integration. Structure solution is usually carried out with SHELXT and refinement with SHELXL, and SIR, Superflip, and Olex2 are also in common use. Automated pipelines now chain these stages together for structure solution during acquisition.
 
-Two observations follow for materials TEM. This community converged on a small number of shared tools that read a common format, and the tools are separable, so a group can substitute one stage without rewriting the pipeline. Analysis in materials TEM is instead dominated by one-off scripts that read vendor formats directly and are rarely released.
+Two observations follow. This community converged on a small number of shared, separable tools that read a common format, so a group can substitute one stage without rewriting the pipeline, whereas materials TEM analysis is dominated by one-off scripts that read vendor formats directly and are rarely released.
 
-The stack is also not uniformly open. SHELX is free for academic use under a license rather than open source, and XDS is free but closed. Crystallography reached its present state on shared and stable software without requiring open source throughout, and it now has stages of its pipeline that cannot be inspected. See [analysis and plotting](framework/analysis.md).
+The stack is also not uniformly open. SHELX is free for academic use under a license rather than open source, and XDS is free but closed, so crystallography now has stages of its pipeline that cannot be inspected. See [analysis and plotting](framework/analysis.md).

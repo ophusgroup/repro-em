@@ -17,13 +17,13 @@ The sample is vitrified on a grid, cooled quickly enough that the surrounding wa
 A single micrograph, with 2D class averages below it. Each particle in the field of view is individually too noisy to interpret, and the class averages are what emerges after aligning and averaging thousands of them. Data from [Küçükoğlu et al., *Nat. Commun.* 2024](https://doi.org/10.1038/s41467-024-52403-5).
 :::
 
-Dose is the constraint that shapes the rest of the experiment. Each particle can absorb only a few tens of electrons per square Ångström before the structure of interest is destroyed, so individual images are dominated by noise and the structure appears only after averaging over many thousands of particles. Each exposure is recorded as a movie rather than a single frame, which allows beam-induced motion to be corrected afterwards. A single session typically produces thousands of micrographs, from which millions of individual particle images can be extracted.
+Dose is the constraint that shapes the rest of the experiment. Each particle can absorb only a few tens of electrons per square Ångström before it is destroyed, so individual images are dominated by noise and the structure appears only after averaging thousands of particles. Each exposure is recorded as a movie rather than a single frame, so beam-induced motion can be corrected afterwards.
 
 ## The computational pipeline
 
-The processing chain is longer than in most materials TEM work, and it typically proceeds as follows. Motion correction aligns the frames within each movie. CTF estimation fits the defocus and astigmatism of each micrograph. Particles are picked, extracted, and sorted by 2D classification, which removes damaged or incorrectly picked images. An initial model is then generated, 3D classification separates distinct conformational or compositional states, and refinement improves the particle orientations and the map together. Post-processing applies masking and sharpening, and an atomic model is built into the resulting density.
+The processing chain is longer than in most materials TEM work: motion correction, CTF estimation, particle picking and extraction, 2D classification to remove bad images, initial model generation, 3D classification to separate conformational states, refinement of orientations and map together, then masking, sharpening, and model building.
 
-Each of these steps has parameters that change the result, which is the reason a deposited map on its own is not sufficient to check the work.
+Each of these steps has parameters that change the result, which is why a deposited map on its own is not sufficient to check the work.
 
 ## Software
 
@@ -43,15 +43,15 @@ The tools below are a non-exhaustive list of what is in common use. Most of the 
 | Tomography, general | IMOD | [Kremer et al. 1996](https://doi.org/10.1006/jsbi.1996.0013) | Open source |
 | Conformational heterogeneity | [cryoDRGN](https://github.com/ml-struct-bio/cryodrgn) | [Zhong et al. 2021](https://doi.org/10.1038/s41592-020-01049-4) | Open source |
 
-Two points are relevant to the arguments made elsewhere on this site. First, nearly every stage of this pipeline has a capable open source implementation, and Scipion allows tools from different packages to be combined within a single recorded workflow. Second, cryoSPARC is very widely used and its source code cannot be inspected, so even a field that has largely solved deposition and validation still has a closed step in the middle of many published pipelines. See [analysis and plotting](../framework/analysis.md).
+Two points connect to arguments made elsewhere. Nearly every stage has a capable open source implementation, and Scipion allows tools from different packages to be combined in a single recorded workflow. But cryoSPARC is very widely used and its source cannot be inspected, so even a field that has largely solved deposition and validation still has a closed step in many published pipelines. See [analysis and plotting](../framework/analysis.md).
 
-The methods for handling conformational heterogeneity are also worth noting for materials science. Rather than sorting particles into a small number of discrete classes, cryoDRGN learns a continuous distribution of conformations using a neural network, which is closer to the kind of structural variation we usually encounter in materials.
+The heterogeneity methods are also worth noting for materials science. Rather than sorting particles into discrete classes, cryoDRGN learns a continuous distribution of conformations, which is closer to the structural variation we usually encounter.
 
 ## Validation
 
-Resolution is measured by the FSC between two reconstructions, each refined from one half of the data. The two halves are separated at the start and kept independent throughout refinement, so neither reconstruction can borrow information from the other and the correlation between them cannot be inflated by overfitting. Resolution is reported at the point where the correlation falls to 0.143, a threshold introduced by [Rosenthal and Henderson (2003)](https://doi.org/10.1016/j.jmb.2003.07.013), and the independent-halves protocol was formalized by [Scheres and Chen (2012)](https://doi.org/10.1038/nmeth.2115).
+Resolution is measured by the FSC between two reconstructions, each refined from one half of the data. The halves are separated at the start and kept independent throughout, so neither can borrow information from the other and the correlation cannot be inflated by overfitting. Resolution is reported where the correlation falls to 0.143 ([Rosenthal and Henderson 2003](https://doi.org/10.1016/j.jmb.2003.07.013)), and the independent-halves protocol was formalized by [Scheres and Chen (2012)](https://doi.org/10.1038/nmeth.2115).
 
-An important feature of this arrangement is that the metric is produced by the refinement procedure itself rather than applied as a separate check afterwards, so an author cannot omit it without changing how the reconstruction was run. Beyond the single global number, local resolution estimates describe how reliability varies across the map, and map-model FSC tests whether the built atomic model agrees with the density.
+The important feature is that the metric is produced by the refinement itself rather than applied as a separate check afterwards, so an author cannot omit it without changing how the reconstruction was run.
 
 ## Deposition
 

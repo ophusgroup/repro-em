@@ -47,13 +47,7 @@ A nominal value read off the instrument is not a calibration. Nominal magnificat
 
 ### An example: the scan rotation
 
-4D-STEM files do not record the rotation between the scan coordinate system and the diffraction coordinate system. This is a single angle, set by the lens excitations and therefore dependent on camera length and lens history, and it relates directions in real space to directions in reciprocal space.
-
-It is known at the microscope, and no widely used format writes it. Every group that needs it recovers it afterwards from the data itself, typically by rotating until the curl of the measured field is minimized. That procedure has a 180° ambiguity, resolved by deciding whether curl or divergence should vanish, and choosing wrong reverses the sign of the result.
-
-The consequence is the failure mode that matters most for reproducibility. Without the scan rotation, DPC vectors point in the wrong direction, strain axes are rotated, and orientation maps are wrong, and none of this announces itself. The analysis runs to completion and produces a confident answer.
-
-This is also exactly the kind of thing an automated validation service would catch, in the same way that checkCIF catches inconsistent crystallographic data. See [learning from crystallography](../crystallography.md).
+4D-STEM files do not record the rotation between the scan and diffraction coordinate systems, a single angle that is known at the microscope and written by no common format. Groups recover it afterwards from the data, with a sign ambiguity that is easy to get wrong. Without it, DPC vectors point the wrong way, strain axes are rotated, and orientation maps are wrong, none of which announces itself: the analysis runs to completion and produces a confident answer. An automated validation service would catch this, as [checkCIF](../crystallography.md) does for crystallography.
 
 Every calibration should carry four things: the value, the method used to obtain it, an uncertainty, and the date it was performed.
 

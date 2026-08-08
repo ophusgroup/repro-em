@@ -12,11 +12,11 @@ The second, and the more practical, is cross-validation. Hold some of the measur
 
 ## Data quality metrics
 
-SPA cryo-EM is the prime example of a field that solved this. Resolution is measured by the FSC between reconstructions from two halves of the data, refined independently so that the two halves never share information. A number computed this way cannot be inflated by overfitting, because overfitting to one half does not help predict the other.
+SPA cryo-EM solved this. Resolution is measured by the FSC between reconstructions from two independently refined halves of the data, and a number computed this way cannot be inflated by overfitting.
 
-The lesson worth taking is structural rather than technical. Cryo-EM did not converge on FSC because it is the perfect metric. It converged because the field agreed on one number, computed one way, reported with every deposition, so that any two results can be compared. Materials TEM has no such number for any of its modalities.
+The lesson is structural rather than technical. Cryo-EM did not converge on FSC because it is the perfect metric, but because the field agreed on one number, computed one way, reported with every deposition, so that any two results can be compared. Materials TEM has no such number for any of its modalities.
 
-We should also be reporting the inputs to data quality rather than only the outputs: dose and dose rate, the DQE and MTF of the detector, the SNR achieved, and the calibration uncertainties that propagate into every derived quantity. See [metadata](metadata.md).
+We should also report the inputs to data quality rather than only the outputs: dose and dose rate, detector DQE and MTF, the SNR achieved, and the calibration uncertainties that propagate into every derived quantity. See [metadata](metadata.md).
 
 ## Cross-validation for inverse problems
 
@@ -30,11 +30,11 @@ This is the check the abstract asks for, stated concretely: reconstruct from a s
 
 ## Held-out measurement tests
 
-The strength of a held-out test is that it measures the thing we actually care about, which is whether the reconstruction has learned the object or the noise.
+A held-out test measures the thing we actually care about, which is whether the reconstruction has learned the object or the noise.
 
-A few practical requirements make it meaningful. The held-out measurements must be genuinely independent of the reconstruction, which means excluded from every stage including probe refinement, alignment, and hyperparameter selection. The prediction has to be compared against the expected noise, since agreement much better than Poisson is a sign of leakage rather than success. And the held-out fraction should be reported along with the result, because a test that withholds 1% is not the same test as one that withholds a third.
+Three requirements make it meaningful. The held-out measurements must be excluded from every stage, including probe refinement, alignment, and hyperparameter selection. The prediction must be compared against the expected noise, since agreement much better than Poisson indicates leakage rather than success. And the held-out fraction must be reported, because withholding 1% is not the same test as withholding a third.
 
-Reporting a held-out error alongside every reconstruction would cost one extra run and would tell a reader more than any figure.
+Reporting a held-out error alongside every reconstruction costs one extra run and tells a reader more than any figure.
 
 ## Reference datasets
 
