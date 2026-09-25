@@ -14,6 +14,7 @@ start` does that), and re-run whenever _build is cleared:
 The deploy workflow runs this between a warm-up build and the real build.
 """
 
+import glob
 import hashlib
 import os
 import re
@@ -33,10 +34,6 @@ THEME = os.path.normpath(
     os.path.join(HERE, "..", "_build", "templates", "site", "myst", "book-theme")
 )
 
-TARGETS = [
-    os.path.join(THEME, "build", "index.js"),
-    os.path.join(THEME, "public", "build", "_shared", "chunk-RUUCG5OS.js"),
-]
 
 # Flat top-bar search runtime (replaces the theme's dialog search).
 # Injected into the server-rendered HTML. The search index path is
@@ -255,9 +252,31 @@ CACHE_TAG = "RPE" + hashlib.sha1(
 #   let a=fn(e,i,t); return !i.children ...
 PATTERN = re.compile(
     r'\[(\w),(\w)\]=([\w$]+(?:\.default)?)\.useState\((\w)\);'
-    r'\(0,([\w$]+)\.useEffect\)\(\(\)=>\{(\w)\.state==="idle"&&\2\(\4\)\},'
-    r'\[\6\.state\]\);let (\w)=[\w$]+\(([^)]*)\);return!(\w)\.c'
+    r'\(0,([\w$]+)\.useEffect\)\(\(\)=>\{(\w)\.state==="idle"&&\2\([^;]*?\)\},'
+    r'(\[\6\.state[^\]]*\])\);let (\w)=[\w$]+\([^)]*\);return!(\w)\.c'
 )
+
+
+def toc_targets():
+    """The bundles carrying the TOC hook, found by content.
+
+    The theme renames its bundles on every release, so a hardcoded chunk
+    name goes stale silently and then fails the build.
+    """
+    out = []
+    cands = [os.path.join(THEME, "build", "index.js")] + sorted(
+        glob.glob(os.path.join(THEME, "public", "build", "**", "*.js"),
+                  recursive=True))
+    for p in cands:
+        try:
+            src = open(p).read()
+        except (OSError, UnicodeDecodeError):
+            continue
+        if ".level===1||" in src or PATTERN.search(src):
+            out.append(p)
+    if not out:
+        print("no TOC bundle matched; theme version changed, sections stay collapsible")
+    return out
 
 
 MARKER = ".title||'')).indexOf('"
@@ -265,7 +284,7 @@ MARKER = ".title||'')).indexOf('"
 
 def patched(src):
     def repl(m):
-        s, o, hook, active, eff, nav, let_var, fn_args, heading = m.groups()
+        s, o, hook, active, eff, nav, deps, let_var, heading = m.groups()
         # The TOC item exposes different fields in the server and client
         # bundles, so match against url, id and title together.
         key = f"(({heading}.url||'')+({heading}.id||'')+({heading}.title||''))"
@@ -276,7 +295,7 @@ def patched(src):
         return (
             f'[{s},{o}]={hook}.useState({keep_open});'
             f'(0,{eff}.useEffect)(()=>{{{nav}.state==="idle"&&{o}({keep_open})}},'
-            f'[{nav}.state]);let {let_var}='
+            f'{deps});let {let_var}='
             + m.group(0).split(f'let {let_var}=', 1)[1]
         )
 
@@ -368,7 +387,7 @@ def main():
             print("skipped cache-bust rename: stock bundle names not found")
 
     if EXPAND_SECTIONS_MATCHING:
-        for path in TARGETS:
+        for path in toc_targets():
             with open(path) as f:
                 src = f.read()
             if MARKER in src:
@@ -376,7 +395,8 @@ def main():
                 continue
             out, n = patched(src)
             if n == 0:
-                sys.exit(f"pattern not found in {path}; theme version changed?")
+                print(f"pattern not found in {path}; theme version changed?")
+                continue
             with open(path, "w") as f:
                 f.write(out)
             total += n
